@@ -1,0 +1,90 @@
+ body {
+     font-family: 'Nunito', sans-serif;
+     background-color: #f0f9ff;
+     /* Prevent pull-to-refresh and other touch actions on the body */
+     overscroll-behavior-y: contain;
+ }
+
+ h1,
+ h2,
+ h3,
+ .font-display {
+     font-family: 'Fredoka One', cursive;
+ }
+
+ .game-card {
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .game-card:hover {
+     transform: translateY(-10px);
+     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+ }
+
+ .btn {
+     transition: transform 0.2s ease, background-color 0.2s ease;
+ }
+
+ .btn:hover {
+     transform: scale(1.05);
+ }
+
+ .btn:active {
+     transform: scale(0.95);
+ }
+
+ .modal-backdrop {
+     background-color: rgba(0, 0, 0, 0.5);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .command-block,
+ .tappable-command {
+     cursor: pointer;
+     user-select: none;
+ }
+
+ .command-block:active {
+     transform: scale(0.9);
+ }
+
+ .drop-zone {
+     border: 3px dashed #93c5fd;
+     min-height: 80px;
+ }
+
+ .toy,
+ .ingredient {
+     cursor: grab;
+     touch-action: none;
+     /* Important for touch drag */
+ }
+
+ .toy:active,
+ .ingredient:active {
+     cursor: grabbing;
+ }
+
+ .toy-box,
+ .cauldron {
+     border: 3px dashed;
+ }
+
+ .toy-box {
+     border-color: #a78bfa;
+ }
+
+ .cauldron {
+     border-color: #facc15;
+ }
+
+ /* Style for the element being dragged via touch */
+ .dragging {
+     position: absolute;
+     z-index: 1000;
+     opacity: 0.8;
+     pointer-events: none;
+     /* So it doesn't interfere with drop target detection */
+ }
