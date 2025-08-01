@@ -26,7 +26,10 @@ function showGame(gameId) {
     gameScreens.forEach(screen => screen.classList.add('hidden'));
     document.getElementById(gameId).classList.remove('hidden');
 
-    if (gameId === 'robot-game') initRobotGame();
+    if (gameId === 'robot-game') {
+        initRobotGame();
+        showModal('❔', 'Peraturan', "Bantu robot menemukan berlian! <br> Bantu robot menemukan berlian sebanyak 10x untuk memenangkan permainan.", 'Mulai permainan!', () => { })
+    };
     if (gameId === 'toys-game') initToysGame();
     if (gameId === 'recipe-game') initRecipeGame();
 }
@@ -63,6 +66,9 @@ const availableCommands = document.getElementById('available-commands');
 let robotPos = { x: 0, y: 0 };
 let gemPos = { x: 0, y: 0 };
 const gridSize = 5;
+let score = 0;
+const robotScore = document.getElementById("robot-score");
+robotScore.textContent = score;
 
 function initRobotGame() {
     robotGrid.innerHTML = '';
@@ -80,6 +86,10 @@ function initRobotGame() {
     } while (robotPos.x === gemPos.x && robotPos.y === gemPos.y);
 
     drawRobotGrid();
+}
+
+function resetCommands() {
+    commandSequence.innerHTML = '';
 }
 
 // Add tap listeners for robot game
@@ -146,10 +156,21 @@ function animateRobot(path) {
 
 function checkRobotWin(finalPos) {
     if (finalPos.x === gemPos.x && finalPos.y === gemPos.y) {
-        sounds.win();
-        showModal('🎉', 'Berhasil!', 'Kamu hebat! Robotnya sampai ke tujuan.', 'Main Lagi', resetRobotGame);
+        score++;
+        if (parseInt(score) < 10) {
+            sounds.win();
+            resetRobotGame();
+            robotScore.textContent = score;
+        } else {
+            sounds.win();
+            showModal('🎉', 'Berhasil!', 'Kamu hebat! Robotnya sampai ke tujuan.', 'Main Lagi', resetRobotGame);
+            score = 0;
+            robotScore.textContent = score;
+        }
     } else {
         sounds.failure();
+        score = 0;
+        robotScore.textContent = score;
         showModal('😥', 'Oh tidak!', 'Robotnya tersesat. Coba periksa lagi urutan perintahmu!', 'Coba Lagi', () => {
             drawRobotGrid();
         });

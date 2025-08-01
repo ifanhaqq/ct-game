@@ -38,13 +38,14 @@
                     <p class="text-gray-500 mt-2">Bantu robot menemukan hartanya dengan menyusun perintah. Ini melatih <strong class="text-green-700">Urutan</strong>!</p>
                 </div>
                 <!-- Game 2: Toys -->
-                <div onclick="showGame('toys-game')" class="game-card bg-white p-6 rounded-2xl shadow-md text-center cursor-pointer border-4 border-purple-300">
+                <!-- <div onclick="showGame('toys-game')" class="game-card bg-white p-6 rounded-2xl shadow-md text-center cursor-pointer border-4 border-purple-300"> -->
+                <div onclick="showModal('❌', 'Nanti yaa', 'Game ini untuk minggu depan!', 'Oke', () => {})" class="game-card bg-white p-6 rounded-2xl shadow-md text-center cursor-pointer border-4 border-purple-300">
                     <div class="text-6xl mb-4">🧸</div>
                     <h3 class="text-2xl font-display text-purple-600">Sortir Mainan</h3>
                     <p class="text-gray-500 mt-2">Masukkan mainan ke kotak yang benar. Ini melatih <strong class="text-purple-700">Pengenalan Pola</strong>!</p>
                 </div>
                 <!-- Game 3: Recipe -->
-                <div onclick="showGame('recipe-game')" class="game-card bg-white p-6 rounded-2xl shadow-md text-center cursor-pointer border-4 border-yellow-300">
+                <div onclick="showModal('❌', 'Nanti yaa', 'Game ini untuk minggu depan!', 'Oke', () => {})" class="game-card bg-white p-6 rounded-2xl shadow-md text-center cursor-pointer border-4 border-yellow-300">
                     <div class="text-6xl mb-4">🍰</div>
                     <h3 class="text-2xl font-display text-yellow-600">Resep Kue Ajaib</h3>
                     <p class="text-gray-500 mt-2">Ikuti langkah-langkah resep untuk membuat kue. Ini melatih <strong class="text-yellow-700">Algoritma</strong>!</p>
@@ -85,9 +86,12 @@
                                     <!-- Tapped commands appear here -->
                                 </div>
                             </div>
+                            <div>
+                                <h1>Skor: <span id="robot-score"></span></h1>
+                            </div>
                             <div class="flex gap-4 mt-4">
                                 <button onclick="runRobot()" class="btn bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl w-full text-lg font-display">Jalankan!</button>
-                                <button onclick="resetRobotGame()" class="btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-xl w-full text-lg font-display">Ulangi</button>
+                                <button onclick="resetCommands()"  class="btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-xl w-full text-lg font-display">Reset</button>
                             </div>
                         </div>
                     </div>
